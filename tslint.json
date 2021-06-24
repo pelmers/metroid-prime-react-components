@@ -8,7 +8,6 @@
         "no-trailing-whitespace": true,
         "no-unsafe-finally": true,
         "one-line": [true, "check-open-brace", "check-whitespace"],
-        "quotemark": [true, "single"],
         "semicolon": [true, "always"],
         "triple-equals": [true, "allow-null-check"],
         "variable-name": [true, "ban-keywords"],
@@ -31,7 +30,6 @@
         "no-unsafe-finally": true,
         "no-var-keyword": false,
         "one-line": [true, "check-open-brace", "check-whitespace"],
-        "quotemark": [true, "single"],
         "semicolon": [true, "always"],
         "triple-equals": [true, "allow-null-check"],
         "typedef-whitespace": [

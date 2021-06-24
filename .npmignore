@@ -1,1 +1,3 @@
 .gitignore
+*.jpg
+dist/demo
