@@ -24,7 +24,6 @@ type ComponentAndRefGetter = {
 };
 
 type Props = {
-    className?: string;
     top: ClickAndText;
     left: ClickAndText;
     right: ClickAndText;
@@ -55,7 +54,7 @@ export class VisorSelect extends React.Component<Props> {
             <>
                 <VisorSelectSVG
                     ref={this.svgRef}
-                    className={this.props.className}
+                    className="visor_select"
                     preserveAspectRatio="none"
                 />
                 <div className="visor-select-text-wrapper">

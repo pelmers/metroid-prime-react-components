@@ -45,3 +45,9 @@ svg #inner_circle:hover {
     top: 0px;
     left: 0px;
 }
+
+.visor_select {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}

@@ -20,7 +20,6 @@ class App extends React.Component<{}> {
     render() {
         return (
             <VisorSelect
-                className="visor_select"
                 top={{
                     text: 'this',
                     onClick: consoleLog,
