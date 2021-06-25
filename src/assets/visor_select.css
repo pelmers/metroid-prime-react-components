@@ -17,6 +17,11 @@ svg #inner_circle:hover {
     background-color: rgba(175, 199, 221, 0.2);
     border: 1.5px solid rgba(150, 192, 219, 0.8);
 }
+@media only screen and (max-width: 1000px) {
+    .visor-select-text {
+        font-size: 24px;
+    }
+}
 
 .visor-select-text:hover {
     background-color: rgba(175, 199, 221, 0.4);
