@@ -14,7 +14,8 @@ const originalHeight = 1024;
 
 type ClickAndText = {
     text: string;
-    onClick: () => void;
+    href?: string;
+    onClick?: () => void;
 };
 
 type ClickAndSrc = {
@@ -33,24 +34,27 @@ type Props = {
 
 export class VisorSelect extends React.Component<Props> {
     svgRef: React.RefObject<SVGElement>;
-    leftDivRef: React.RefObject<HTMLDivElement>;
-    rightDivRef: React.RefObject<HTMLDivElement>;
-    topDivRef: React.RefObject<HTMLDivElement>;
+    topDivRef: React.RefObject<HTMLAnchorElement>;
+    leftDivRef: React.RefObject<HTMLAnchorElement>;
+    rightDivRef: React.RefObject<HTMLAnchorElement>;
     radarImgRef: React.RefObject<HTMLImageElement>;
     mapImgRef: React.RefObject<HTMLImageElement>;
     radarMask: PathNode[];
     mapMask: PathNode[];
 
+    constructor(props: Props) {
+        super(props);
+        this.svgRef = React.createRef();
+        this.topDivRef = React.createRef();
+        this.leftDivRef = React.createRef();
+        this.rightDivRef = React.createRef();
+        this.radarImgRef = React.createRef();
+        this.mapImgRef = React.createRef();
+    }
+
     resizeListener: () => void;
 
     render() {
-        this.svgRef = React.createRef();
-        this.leftDivRef = React.createRef();
-        this.rightDivRef = React.createRef();
-        this.topDivRef = React.createRef();
-        this.radarImgRef = React.createRef();
-        this.mapImgRef = React.createRef();
-
         return (
             <>
                 <VisorSelectSVG
@@ -59,27 +63,19 @@ export class VisorSelect extends React.Component<Props> {
                     preserveAspectRatio="none"
                 />
                 <div className="visor-select-text-wrapper">
-                    <div
-                        className="visor-select-text"
-                        ref={this.leftDivRef}
-                        onClick={this.props.left.onClick}
-                    >
-                        <div>{this.props.left.text}</div>
-                    </div>
-                    <div
-                        className="visor-select-text"
-                        ref={this.rightDivRef}
-                        onClick={this.props.right.onClick}
-                    >
-                        <div>{this.props.right.text}</div>
-                    </div>
-                    <div
-                        className="visor-select-text"
-                        ref={this.topDivRef}
-                        onClick={this.props.top.onClick}
-                    >
-                        <div>{this.props.top.text}</div>
-                    </div>
+                    {[{ prop: this.props.top, ref: this.topDivRef },
+                    { prop: this.props.left, ref: this.leftDivRef },
+                    { prop: this.props.right, ref: this.rightDivRef },
+                ].map(
+                        ({ prop, ref }) => {
+                            const { text, onClick, href } = prop;
+                            return (
+                                <a className="visor-select-text" ref={ref} onClick={onClick} href={href}>
+                                    <div>{text}</div>
+                                </a>
+                            );
+                        }
+                    )}
                     <img
                         className="visor-select-masked-image"
                         ref={this.radarImgRef}
@@ -114,7 +110,7 @@ export class VisorSelect extends React.Component<Props> {
             ['#top_text_box', this.topDivRef],
             ['#left_text_box', this.leftDivRef],
             ['#right_text_box', this.rightDivRef],
-        ] as [string, React.RefObject<HTMLDivElement>][]) {
+        ] as [string, React.RefObject<HTMLAnchorElement>][]) {
             const $boxElement = current.querySelector<SVGGElement>(box);
             $boxElement.style.display = 'block';
             const { top, left, width, height } = $boxElement.getBoundingClientRect();

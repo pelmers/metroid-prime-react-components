@@ -9,6 +9,7 @@ svg #inner_circle:hover {
 }
 
 .visor-select-text {
+    text-decoration: none;
     font-size: 36px;
     color: rgb(75, 180, 255);
     font-family: 'SerpentineDBold';
@@ -28,7 +29,7 @@ svg #inner_circle:hover {
     cursor: pointer;
 }
 
-.visor-select-text > div {
+.visor-select-text > * {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
