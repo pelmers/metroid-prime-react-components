@@ -95,8 +95,8 @@ export class VisorSelect extends React.Component<Props> {
     rescale() {
         const { current } = this.svgRef;
         // Multiply original dimension by scale to get client viewport dimension
-        const scaleX = current.clientWidth / originalWidth;
-        const scaleY = current.clientHeight / originalHeight;
+        const scaleX = current.getBoundingClientRect().width / originalWidth;
+        const scaleY = current.getBoundingClientRect().height / originalHeight;
         for (const [box, ref] of [
             ['#top_text_box', this.topDivRef],
             ['#left_text_box', this.leftDivRef],
@@ -122,10 +122,16 @@ export class VisorSelect extends React.Component<Props> {
             ref.current.style.position = 'absolute';
             // The 8 referenced here is the stroke (border) of the frame,
             // and we want to position the mask so it starts inside of the border
-            ref.current.style.left = `${left + 8 * scaleX}px`;
-            ref.current.style.top = `${top + 8 * scaleY}px`;
-            ref.current.style.width = `${width + 8 * scaleX}px`;
-            ref.current.style.height = `${height + 8 * scaleY}px`;
+            let offset = 8;
+            // Note firefox behaves differently from other browsers: it adds an extra padding around the shape for some reason
+            // related: https://stackoverflow.com/questions/63406204/svg-paths-stroke-width-affecting-getboundingclientrect-results-in-firefox
+            if (navigator.userAgent.includes('Firefox')) {
+                offset *= 3;
+            }
+            ref.current.style.left = `${left + offset * scaleX}px`;
+            ref.current.style.top = `${top + offset * scaleY}px`;
+            ref.current.style.width = `${width}px`;
+            ref.current.style.height = `${height}px`;
             const $maskPath = $maskElement.querySelector('path');
             $maskPath.setAttribute(
                 'd',
