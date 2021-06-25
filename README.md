@@ -17,10 +17,10 @@ It's work in progress! I know I've cut some corners here, and some of the items
 don't quite align perfectly.
 
 ## Example
-![Demo screenshot](./screenshot.jpg)]
+![Demo screenshot](./screenshot.jpg)
 
 ## Reference
-![in-game screenshot](./reference.jpg)]
+![in-game screenshot](./reference.jpg)
 
 ## Development
 ```
@@ -32,6 +32,7 @@ Then open `dist/index.html` to see the demo site.
 
 ## Usage
 See the [demo page](./src/demo/main.tsx).
+
 Note: not published on npm just yet.
 
 ### Remarks
