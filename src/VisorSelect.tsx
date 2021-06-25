@@ -18,9 +18,9 @@ type ClickAndText = {
     onClick?: () => void;
 };
 
-type ClickAndSrc = {
-    src: string;
-    onClick: () => void;
+type ComponentAndRefGetter = {
+    component: JSX.Element;
+    getRef: () => React.RefObject<HTMLElement>;
 };
 
 type Props = {
@@ -28,8 +28,8 @@ type Props = {
     top: ClickAndText;
     left: ClickAndText;
     right: ClickAndText;
-    radar: ClickAndSrc;
-    map: ClickAndSrc;
+    radar: ComponentAndRefGetter;
+    map: ComponentAndRefGetter;
 };
 
 export class VisorSelect extends React.Component<Props> {
@@ -37,8 +37,6 @@ export class VisorSelect extends React.Component<Props> {
     topDivRef: React.RefObject<HTMLAnchorElement>;
     leftDivRef: React.RefObject<HTMLAnchorElement>;
     rightDivRef: React.RefObject<HTMLAnchorElement>;
-    radarImgRef: React.RefObject<HTMLImageElement>;
-    mapImgRef: React.RefObject<HTMLImageElement>;
     radarMask: PathNode[];
     mapMask: PathNode[];
 
@@ -48,8 +46,6 @@ export class VisorSelect extends React.Component<Props> {
         this.topDivRef = React.createRef();
         this.leftDivRef = React.createRef();
         this.rightDivRef = React.createRef();
-        this.radarImgRef = React.createRef();
-        this.mapImgRef = React.createRef();
     }
 
     resizeListener: () => void;
@@ -63,31 +59,26 @@ export class VisorSelect extends React.Component<Props> {
                     preserveAspectRatio="none"
                 />
                 <div className="visor-select-text-wrapper">
-                    {[{ prop: this.props.top, ref: this.topDivRef },
-                    { prop: this.props.left, ref: this.leftDivRef },
-                    { prop: this.props.right, ref: this.rightDivRef },
-                ].map(
-                        ({ prop, ref }) => {
-                            const { text, onClick, href } = prop;
-                            return (
-                                <a className="visor-select-text" ref={ref} onClick={onClick} href={href}>
-                                    <div>{text}</div>
-                                </a>
-                            );
-                        }
-                    )}
-                    <img
-                        className="visor-select-masked-image"
-                        ref={this.radarImgRef}
-                        src={this.props.radar.src}
-                        onClick={this.props.radar.onClick}
-                    ></img>
-                    <img
-                        className="visor-select-masked-image"
-                        ref={this.mapImgRef}
-                        src={this.props.map.src}
-                        onClick={this.props.map.onClick}
-                    ></img>
+                    {[
+                        { prop: this.props.top, ref: this.topDivRef },
+                        { prop: this.props.left, ref: this.leftDivRef },
+                        { prop: this.props.right, ref: this.rightDivRef },
+                    ].map(({ prop, ref }, index) => {
+                        const { text, onClick, href } = prop;
+                        return (
+                            <a
+                                className="visor-select-text"
+                                ref={ref}
+                                onClick={onClick}
+                                href={href}
+                                key={index}
+                            >
+                                <div>{text}</div>
+                            </a>
+                        );
+                    })}
+                    {this.props.map.component}
+                    {this.props.radar.component}
                 </div>
                 <MapMaskSVG
                     className="visor-select-mask"
@@ -122,9 +113,9 @@ export class VisorSelect extends React.Component<Props> {
         }
 
         for (const [box, maskId, ref, path] of [
-            ['#map_fill', '#map_mask', this.mapImgRef, this.mapMask],
-            ['#radar_fill', '#radar_mask', this.radarImgRef, this.radarMask],
-        ] as [string, string, React.RefObject<HTMLImageElement>, PathNode[]][]) {
+            ['#map_fill', '#map_mask', this.props.map.getRef(), this.mapMask],
+            ['#radar_fill', '#radar_mask', this.props.radar.getRef(), this.radarMask],
+        ] as [string, string, React.RefObject<HTMLElement>, PathNode[]][]) {
             const $boxElement = current.querySelector<SVGGElement>(box);
             const $maskElement = document.querySelector(maskId);
             const { top, left, width, height } = $boxElement.getBoundingClientRect();

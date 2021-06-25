@@ -10,10 +10,12 @@ const consoleLog = () => {
     console.log('clicked');
 };
 class App extends React.Component<{}> {
-    topRef: React.RefObject<HTMLDivElement>;
+    radarRef: React.RefObject<HTMLImageElement>;
+    mapRef: React.RefObject<HTMLImageElement>;
     constructor(props: {}) {
         super(props);
-        this.topRef = React.createRef();
+        this.radarRef = React.createRef();
+        this.mapRef = React.createRef();
     }
     render() {
         return (
@@ -26,8 +28,26 @@ class App extends React.Component<{}> {
                 }}
                 left={{ text: 'what', onClick: consoleLog }}
                 right={{ text: 'is??', onClick: consoleLog }}
-                radar={{ src: './favicon.ico', onClick: consoleLog }}
-                map={{ src: './favicon.ico', onClick: consoleLog }}
+                radar={{
+                    component: (
+                        <img
+                            className="masked-image"
+                            ref={this.radarRef}
+                            src="favicon.ico"
+                        ></img>
+                    ),
+                    getRef: () => this.radarRef,
+                }}
+                map={{
+                    component: (
+                        <img
+                            className="masked-image"
+                            ref={this.mapRef}
+                            src="favicon.ico"
+                        ></img>
+                    ),
+                    getRef: () => this.mapRef,
+                }}
             />
         );
     }
