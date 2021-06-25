@@ -2,9 +2,9 @@
 
 ## Introduction
 Even though the games came out more than a decade ago, I still remember the
-Metroid Prime series as some of the most immersive games I've ever experienced.
-From the eerie way Samus's face [reflects in the visor](https://twitter.com/mctroid/status/1226199961970380801) in dark areas to
-how you discover the game world by [physically scanning them](https://metroid.fandom.com/wiki/Scan_Visor).
+Metroid Prime series as some of the most immersive games I've ever experienced,
+from the eerie way Samus's face [reflects in the visor](https://twitter.com/mctroid/status/1226199961970380801) in dark areas to
+how you discover the world by [physically scanning them](https://metroid.fandom.com/wiki/Scan_Visor).
 
 Source Gaming [published a detailed look](https://sourcegaming.info/2017/06/28/holism-metroid-prime-and-the-scan-visor/)
 at how the game's interface elements serve as a narrative tool that elevates
