@@ -1,1 +1,1 @@
-export {VisorSelect} from './VisorSelect';
+export { VisorSelect } from './VisorSelect';
