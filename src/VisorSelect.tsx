@@ -33,15 +33,19 @@ type Props = {
 
 export class VisorSelect extends React.Component<Props> {
     svgRef: React.RefObject<SVGElement>;
+    wrapperRef: React.RefObject<HTMLDivElement>;
     topDivRef: React.RefObject<HTMLAnchorElement>;
     leftDivRef: React.RefObject<HTMLAnchorElement>;
     rightDivRef: React.RefObject<HTMLAnchorElement>;
     radarMask: PathNode[];
     mapMask: PathNode[];
 
+    hueRotation: number = 0;
+
     constructor(props: Props) {
         super(props);
         this.svgRef = React.createRef();
+        this.wrapperRef = React.createRef();
         this.topDivRef = React.createRef();
         this.leftDivRef = React.createRef();
         this.rightDivRef = React.createRef();
@@ -57,7 +61,7 @@ export class VisorSelect extends React.Component<Props> {
                     className="visor_select"
                     preserveAspectRatio="none"
                 />
-                <div className="visor-select-text-wrapper">
+                <div className="visor-select-text-wrapper" ref={this.wrapperRef}>
                     {[
                         { prop: this.props.top, ref: this.topDivRef },
                         { prop: this.props.left, ref: this.leftDivRef },
@@ -161,6 +165,14 @@ export class VisorSelect extends React.Component<Props> {
         this.rightDivRef.current.style.transform = 'rotateY(-25deg) rotateX(5deg)';
 
         window.addEventListener('resize', this.resizeListener);
+        this.svgRef.current
+            .querySelector('#inner_circle')
+            .addEventListener('click', () => {
+                this.hueRotation = (this.hueRotation + 30) % 360;
+                this.svgRef.current.style.filter = `hue-rotate(${this.hueRotation}deg)`;
+                this.wrapperRef.current.style.filter = `hue-rotate(${this.hueRotation}deg)`;
+            });
+
         this.rescale();
     }
 
