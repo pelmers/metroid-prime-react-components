@@ -110,7 +110,6 @@ export class VisorSelect extends React.Component<Props> {
         // Multiply original dimension by scale to get client viewport dimension
         const scaleX = current.clientWidth / originalWidth;
         const scaleY = current.clientHeight / originalHeight;
-        console.log('enter rescale!', scaleX, scaleY);
         for (const [box, ref] of [
             ['#top_text_box', this.topDivRef],
             ['#left_text_box', this.leftDivRef],

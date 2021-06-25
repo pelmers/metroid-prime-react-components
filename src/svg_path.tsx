@@ -24,7 +24,6 @@ export function parse(d: string): PathNode[] {
         .split(new RegExp(`[${[...new Set(commands)].join('')}]`))
         .filter((s) => s.length > 0);
     const result = [];
-    console.log(d, commands, points);
     for (let i = 0; i < Math.max(points.length, commands.length); i++) {
         if (i < commands.length) {
             result.push({ command: commands[i] });
