@@ -48,8 +48,10 @@ svg #inner_circle:hover {
 .visor-select-masked-image {
     object-fit: cover;
     opacity: 0.73;
+    filter: hue-rotate(30deg);
 }
 .visor-select-masked-image:hover {
     cursor: pointer;
     opacity: 1;
+    filter: none;
 }
