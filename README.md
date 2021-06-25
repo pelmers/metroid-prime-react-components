@@ -11,7 +11,7 @@ at how the game's interface elements serve as a narrative tool that elevates
 the story. It's a great read on *Prime*'s design!
 
 In this project I'm playing around with some front-end work by implementing
-parts of the game's helmet HUD UI.
+parts of the game's helmet HUD UI as react.js components.
 
 It's work in progress! I know I've cut some corners here, and some of the items
 don't quite align perfectly.
@@ -29,6 +29,10 @@ yarn watch
 ```
 Then open `dist/index.html` to see the demo site.
 `yarn format` to prettier-ify the code.
+
+## Usage
+See the [demo page](./src/demo/main.tsx).
+Note: not published on npm just yet.
 
 ### Remarks
 - The fact that
