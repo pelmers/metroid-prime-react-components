@@ -21,6 +21,8 @@ don't quite align perfectly.
 
 ![Demo screenshot](./screenshot.jpg)
 
+See the [working demo site](https://pelmers.github.io/metroid-prime-react-components/).
+
 ## Reference
 
 ![in-game screenshot](./reference.jpg)
