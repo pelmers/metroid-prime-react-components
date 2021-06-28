@@ -112,6 +112,8 @@ export class VisorSelect extends React.Component<Props> {
             ref.current.style.top = `${top}px`;
             ref.current.style.width = `${width}px`;
             ref.current.style.height = `${height}px`;
+            // We hide the SVG box because we're putting an regular div on top,
+            // that lets us add a perspective filter to make it look more 3-D
             $boxElement.style.display = 'none';
         }
 
@@ -125,8 +127,11 @@ export class VisorSelect extends React.Component<Props> {
             ref.current.style.position = 'absolute';
             // The 8 referenced here is the stroke (border) of the frame,
             // and we want to position the mask so it starts inside of the border
+            // Note that the browser only does an approximation for the bounding box of <path> elements,
+            // so even though ideally this would be a perfect fit, in practice it could be a few px off
             let offset = 8;
-            // Note firefox behaves differently from other browsers: it adds an extra padding around the shape for some reason
+            // Firefox behaves differently from other browsers: it adds an extra padding around the shape for some reason
+            // multiplying by 3 is not very exact but it's pretty close from what I could tell
             // related: https://stackoverflow.com/questions/63406204/svg-paths-stroke-width-affecting-getboundingclientrect-results-in-firefox
             if (navigator.userAgent.includes('Firefox')) {
                 offset *= 3;
