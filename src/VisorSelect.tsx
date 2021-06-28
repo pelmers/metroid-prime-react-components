@@ -141,18 +141,24 @@ export class VisorSelect extends React.Component<Props> {
             ref.current.style.width = `${width}px`;
             ref.current.style.height = `${height}px`;
             const $maskPath = $maskElement.querySelector('path');
-            $maskPath.setAttribute(
-                'd',
-                serialize(
-                    path.map((n) => {
-                        if ('x' in n) {
-                            return { x: n.x * scaleX, y: n.y * scaleY };
-                        } else {
-                            return n;
-                        }
-                    })
-                )
-            );
+            // If using react-snap to pre-render the React, we want to make sure not to
+            // overwrite the original attribute! If we skip this step then the result page
+            // will have an error based on the difference between the react-snap
+            // 'window' size and the original SVG's coordinate system
+            if (window.navigator.userAgent !== 'ReactSnap') {
+                $maskPath.setAttribute(
+                    'd',
+                    serialize(
+                        path.map((n) => {
+                            if ('x' in n) {
+                                return { x: n.x * scaleX, y: n.y * scaleY };
+                            } else {
+                                return n;
+                            }
+                        })
+                    )
+                );
+            }
             ref.current.style.clipPath = `url(${maskId})`;
         }
     }
