@@ -1,4 +1,4 @@
-# Metroid Prime-like React Components
+# [Metroid Prime-like React Components](https://pelmers.github.io/metroid-prime-react-components/)
 
 ## Introduction
 
