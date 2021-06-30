@@ -6,9 +6,6 @@ import './demo.css';
 
 const body = document.querySelector('body');
 
-const consoleLog = () => {
-    console.log('clicked');
-};
 class App extends React.Component<{}> {
     radarRef: React.RefObject<HTMLImageElement>;
     mapRef: React.RefObject<HTMLImageElement>;
@@ -21,12 +18,16 @@ class App extends React.Component<{}> {
         return (
             <VisorSelect
                 top={{
-                    text: 'this',
-                    onClick: consoleLog,
+                    text: 'Metroid Prime React Components',
+                }}
+                left={{
+                    text: 'source code',
+                    href: 'https://github.com/pelmers/metroid-prime-react-components',
+                }}
+                right={{
+                    text: 'example site',
                     href: 'https://pelmers.com/',
                 }}
-                left={{ text: 'what', onClick: consoleLog }}
-                right={{ text: 'is??', onClick: consoleLog }}
                 radar={{
                     component: (
                         <img
