@@ -39,13 +39,6 @@ svg #inner_circle:hover {
     perspective: 2000px;
 }
 
-.visor-select-mask {
-    position: absolute;
-    pointer-events: none;
-    top: 0px;
-    left: 0px;
-}
-
 .visor_select {
     position: fixed;
     width: 100%;

@@ -51,3 +51,8 @@ Note: not published on npm just yet.
 -   I created the SVG files in [Figma](https://www.figma.com/), which might be
     somewhat unconventional but it was much easier to pick up than something like
     Inkscape (and cheaper than Illustrator, of course!)
+
+### TODO
+
+-   Add 'combat visor' screen
+-   Add 'scan visor' screen
