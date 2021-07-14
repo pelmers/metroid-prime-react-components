@@ -1,0 +1,15 @@
+.scan-visor-content-wrapper {
+    perspective: 2000px;
+}
+
+.scan-visor-content {
+    font-size: 36px;
+    color: rgb(75, 180, 255);
+    font-family: 'SerpentineDBold';
+    position: absolute;
+    text-align: center;
+}
+
+.scan-visor-energy-value {
+    text-align: right;
+}

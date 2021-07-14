@@ -2,6 +2,7 @@ import React from 'react';
 // @ts-ignore svg loading handled by svgr
 import VisorSelectSVG from './assets/visor_select.svg';
 
+import './assets/common.css';
 import './assets/visor_select.css';
 import { ClickAndText, ComponentAndRefGetter } from './types';
 import MasksCommon from './MasksCommon';
@@ -42,7 +43,7 @@ export class VisorSelect extends React.Component<Props> {
             <>
                 <VisorSelectSVG
                     ref={this.svgRef}
-                    className="visor_select"
+                    className="helmet_hud"
                     preserveAspectRatio="none"
                 />
                 <div className="visor-select-text-wrapper" ref={this.wrapperRef}>
