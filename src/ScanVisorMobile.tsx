@@ -1,55 +1,48 @@
 import React from 'react';
 
 // @ts-ignore svg loading handled by svgr
-import ScanVisorDesktopSVG from './assets/scan_visor.svg';
+import ScanVisorMobileSVG from './assets/scan_mobile.svg';
 
 import './assets/common.css';
 import './assets/scan_visor_desktop.css';
+// TODO put css in its own file
+// import './assets/scan_visor_mobile.css';
 
-export type ScanVisorDesktopProps = {
+type Props = {
     descriptionPanel: JSX.Element;
     centerPanel: JSX.Element;
-    leftPanel: JSX.Element;
-    rightPanel: JSX.Element;
     energyValue: string;
 };
 
-export default class ScanVisorDesktop extends React.Component<ScanVisorDesktopProps> {
+export default class ScanVisorMobile extends React.Component<Props> {
     svgRef: React.RefObject<SVGElement>;
     wrapperRef: React.RefObject<HTMLDivElement>;
     centerDivRef: React.RefObject<HTMLDivElement>;
     descriptionDivRef: React.RefObject<HTMLDivElement>;
-    leftDivRef: React.RefObject<HTMLDivElement>;
-    rightDivRef: React.RefObject<HTMLDivElement>;
     energyTextRef: React.RefObject<HTMLDivElement>;
 
-    constructor(props: ScanVisorDesktopProps) {
+    constructor(props: Props) {
         super(props);
         this.svgRef = React.createRef();
         this.wrapperRef = React.createRef();
         this.centerDivRef = React.createRef();
         this.descriptionDivRef = React.createRef();
-        this.leftDivRef = React.createRef();
-        this.rightDivRef = React.createRef();
         this.energyTextRef = React.createRef();
     }
 
     resizeListener: () => void;
 
     render() {
-        const { leftPanel, rightPanel, centerPanel, descriptionPanel, energyValue } =
-            this.props;
+        const { centerPanel, descriptionPanel, energyValue } = this.props;
         return (
             <>
-                <ScanVisorDesktopSVG
+                <ScanVisorMobileSVG
                     ref={this.svgRef}
                     className="helmet_hud"
                     preserveAspectRatio="none"
                 />
                 <div className="scan-visor-content-wrapper" ref={this.wrapperRef}>
                     {[
-                        { child: leftPanel, ref: this.leftDivRef },
-                        { child: rightPanel, ref: this.rightDivRef },
                         { child: centerPanel, ref: this.centerDivRef },
                         { child: descriptionPanel, ref: this.descriptionDivRef },
                     ].map(({ child, ref }, index) => (
@@ -71,8 +64,6 @@ export default class ScanVisorDesktop extends React.Component<ScanVisorDesktopPr
     rescale() {
         const { current } = this.svgRef;
         for (const [box, ref] of [
-            ['#left_panel_box', this.leftDivRef],
-            ['#right_panel_box', this.rightDivRef],
             ['#center_panel_box', this.centerDivRef],
             ['#description_box', this.descriptionDivRef],
             ['#energy_text', this.energyTextRef],
@@ -94,8 +85,6 @@ export default class ScanVisorDesktop extends React.Component<ScanVisorDesktopPr
 
     componentDidMount() {
         this.resizeListener = () => this.rescale();
-        this.leftDivRef.current.style.transform = 'rotateY(30deg)';
-        this.rightDivRef.current.style.transform = 'rotateY(-30deg)';
         this.energyTextRef.current.style.transform = 'rotateX(-10deg) rotateY(-15deg)';
 
         window.addEventListener('resize', this.resizeListener);

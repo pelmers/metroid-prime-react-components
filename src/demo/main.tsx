@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { VisorSelect } from '..';
-import ScanVisorDesktop from '../ScanVisorDesktop';
+import ScanVisor from '../ScanVisor';
 
 import './demo.css';
 
@@ -61,7 +61,7 @@ class App extends React.Component<{}, State> {
             );
         } else if (this.state.visor === 'scan') {
             return (
-                <ScanVisorDesktop
+                <ScanVisor
                     centerPanel={
                         <div>
                             <div
