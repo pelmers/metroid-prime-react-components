@@ -4,9 +4,7 @@ import React from 'react';
 import ScanVisorMobileSVG from './assets/scan_mobile.svg';
 
 import './assets/common.css';
-import './assets/scan_visor_desktop.css';
-// TODO put css in its own file
-// import './assets/scan_visor_mobile.css';
+import './assets/scan_visor_mobile.css';
 
 type Props = {
     descriptionPanel: JSX.Element;
@@ -41,7 +39,10 @@ export default class ScanVisorMobile extends React.Component<Props> {
                     className="helmet_hud"
                     preserveAspectRatio="none"
                 />
-                <div className="scan-visor-content-wrapper" ref={this.wrapperRef}>
+                <div
+                    className="scan-visor-mobile-content-wrapper"
+                    ref={this.wrapperRef}
+                >
                     {[
                         { child: centerPanel, ref: this.centerDivRef },
                         { child: descriptionPanel, ref: this.descriptionDivRef },
