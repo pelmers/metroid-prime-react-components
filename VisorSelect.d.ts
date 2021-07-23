@@ -1,15 +1,7 @@
 import React from 'react';
+import './assets/common.css';
 import './assets/visor_select.css';
-import { PathNode } from './svg_path';
-declare type ClickAndText = {
-    text: string;
-    href?: string;
-    onClick?: () => void;
-};
-declare type ComponentAndRefGetter = {
-    component: JSX.Element;
-    getRef: () => React.RefObject<HTMLElement>;
-};
+import { ClickAndText, ComponentAndRefGetter } from './types';
 declare type Props = {
     top: ClickAndText;
     left: ClickAndText;
@@ -23,8 +15,6 @@ export declare class VisorSelect extends React.Component<Props> {
     topDivRef: React.RefObject<HTMLAnchorElement>;
     leftDivRef: React.RefObject<HTMLAnchorElement>;
     rightDivRef: React.RefObject<HTMLAnchorElement>;
-    radarMask: PathNode[];
-    mapMask: PathNode[];
     hueRotation: number;
     constructor(props: Props);
     resizeListener: () => void;
