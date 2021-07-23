@@ -12,7 +12,7 @@ type State = {
 };
 
 class App extends React.Component<{}, State> {
-    state: State = { visor: 'scan' };
+    state: State = { visor: 'select' };
     radarRef: React.RefObject<HTMLImageElement>;
     mapRef: React.RefObject<HTMLImageElement>;
     constructor(props: {}) {
