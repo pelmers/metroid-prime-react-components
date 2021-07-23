@@ -9,7 +9,7 @@ const pkg = require('./package.json');
 const sharedConfig = {
     context: ROOT,
 
-    mode: process.env.BUILD_MODE || 'development',
+    mode: 'development',
 
     plugins: [new MiniCssExtractPlugin()],
     output: {

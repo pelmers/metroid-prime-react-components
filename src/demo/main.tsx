@@ -70,7 +70,7 @@ class App extends React.Component<{}, State> {
                             </div>
                         </div>
                     }
-                    rightPanel={<div>right text</div>}
+                    rightPanel={<div>try resizing me!</div>}
                     leftPanel={<div>left text</div>}
                     descriptionPanel={
                         <div className="scan-description-content">
