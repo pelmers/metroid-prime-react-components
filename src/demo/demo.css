@@ -15,3 +15,16 @@ body {
     opacity: 1;
     filter: none;
 }
+
+.scan-visor-content > * {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.scan-description-content {
+    top: 10px;
+    padding-left: 3em;
+    padding-right: 3em;
+    transform: none;
+}

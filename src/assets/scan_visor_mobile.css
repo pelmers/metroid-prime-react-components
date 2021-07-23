@@ -1,0 +1,11 @@
+.scan-visor-mobile-content-wrapper {
+    perspective: 1200px;
+}
+
+.scan-visor-mobile-content-wrapper > .scan-visor-content {
+    font-size: 24px;
+    color: rgb(75, 180, 255);
+    font-family: 'SerpentineDBold';
+    position: absolute;
+    text-align: center;
+}

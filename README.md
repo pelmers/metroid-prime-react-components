@@ -1,4 +1,4 @@
-# Metroid Prime-like React Components
+# [Metroid Prime-like React Components](https://pelmers.github.io/metroid-prime-react-components/)
 
 ## Introduction
 
@@ -20,6 +20,8 @@ don't quite align perfectly.
 ## Example
 
 ![Demo screenshot](./screenshot.jpg)
+
+See the [working demo site](https://pelmers.github.io/metroid-prime-react-components/).
 
 ## Reference
 
@@ -49,3 +51,8 @@ Note: not published on npm just yet.
 -   I created the SVG files in [Figma](https://www.figma.com/), which might be
     somewhat unconventional but it was much easier to pick up than something like
     Inkscape (and cheaper than Illustrator, of course!)
+
+### TODO
+
+-   Add 'combat visor' screen
+-   Add 'scan visor' screen

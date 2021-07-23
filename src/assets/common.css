@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'SerpentineDBold';
+    src: url('./SerpentineDBol.ttf');
+}
+
+.helmet_hud {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
