@@ -14,8 +14,11 @@ the story. It's a great read on _Prime_'s design!
 In this project I'm playing around with some front-end work by implementing
 parts of the game's helmet HUD UI as react.js components.
 
-It's work in progress! I know I've cut some corners here, and some of the items
-don't quite align perfectly.
+It's work in progress! I know I've cut some corners here (yes, figuratively and
+literally), and some of the items don't quite align perfectly.
+
+Also, see my [blog post](https://pelmers.com/metroid-prime-react-components/)
+that contains more details on this work.
 
 ## Example
 

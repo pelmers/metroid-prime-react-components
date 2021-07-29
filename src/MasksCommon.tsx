@@ -50,7 +50,8 @@ export default class MasksCommon extends React.Component<Props> {
             const $boxElement = current.querySelector<SVGGElement>(box);
             const $maskElement = document.querySelector(maskId);
             const { top, left, width, height } = $boxElement.getBoundingClientRect();
-            ref.current.style.position = 'absolute';
+            // Set it to fixed so it stays in its box even if document is scrolled.
+            ref.current.style.position = 'fixed';
             // The 8 referenced here is the stroke (border) of the frame,
             // and we want to position the mask so it starts inside of the border
             // Note that the browser only does an approximation for the bounding box of <path> elements,
